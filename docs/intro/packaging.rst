@@ -17,19 +17,19 @@ nugets:
 
 Quickstart UI
 ^^^^^^^^^^^^^
-`github <https://github.com/IdentityServer/IdentityServer4.Quickstart.UI>`_
+`github <https://github.com/3chum/IdentityServer4.Quickstart.UI>`_
 
 Contains a simple starter UI including login, logout and consent pages.
 
 Access token validation handler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-`nuget <https://www.nuget.org/packages/IdentityServer4.AccessTokenValidation>`_ | `github <https://github.com/IdentityServer/IdentityServer4.AccessTokenValidation>`_
+`nuget <https://www.nuget.org/packages/IdentityServer4.AccessTokenValidation>`_ | `github <https://github.com/3chum/IdentityServer4.AccessTokenValidation>`_
 
 ASP.NET Core authentication handler for validating tokens in APIs. The handler allows supporting both JWT and reference tokens in the same API.
 
 Templates
 ^^^^^^^^^
-`nuget <https://www.nuget.org/packages/IdentityServer4.Templates>`_ | `github <https://github.com/IdentityServer/IdentityServer4.Templates>`_
+`nuget <https://www.nuget.org/packages/IdentityServer4.Templates>`_ | `github <https://github.com/3chum/IdentityServer4.Templates>`_
 
 Contains templates for the dotnet CLI.
 
