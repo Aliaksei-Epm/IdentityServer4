@@ -14,8 +14,6 @@ using IdentityServer4.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace IdentityServer4.Validation
 {
@@ -205,11 +203,14 @@ namespace IdentityServer4.Validation
                         case string s:
                             payload.Add(key, s);
                             break;
-                        case JObject jobj:
-                            payload.Add(key, jobj.ToString(Formatting.None));
-                            break;
-                        case JArray jarr:
-                            payload.Add(key, jarr.ToString(Formatting.None));
+                        default:
+                            var type = value?.GetType()?.ToString();
+                            if(
+                                "Microsoft.IdentityModel.Json.Linq.JObject" == type ||
+                                "Microsoft.IdentityModel.Json.Linq.JArray" == type
+                            ) 
+                                payload.Add(key, value.ToString());
+
                             break;
                     }
                 }
