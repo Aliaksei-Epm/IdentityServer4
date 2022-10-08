@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using IdentityModel;
 using IdentityServer4.Configuration;
 
+#pragma warning disable CS0618
+
 namespace IdentityServer4.Services
 {
     /// <summary>

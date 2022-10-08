@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
@@ -19,7 +19,7 @@
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
 
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
-    <!--<PackageReference Include="IdentityServer4.EntityFramework" />-->
+    <!--<PackageReference Include="3Chum.IdentityServer4.EntityFramework" />-->
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" PrivateAssets="All" />
     <PackageReference Include="System.Security.Principal.Windows" />
     

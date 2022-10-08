@@ -14,6 +14,7 @@ using IdentityModel;
 using IdentityServer4.EntityFramework.Entities;
 using Microsoft.EntityFrameworkCore.InMemory.Infrastructure.Internal;
 using Xunit;
+#pragma warning disable EF1001
 
 namespace IdentityServer4.EntityFramework.IntegrationTests.Stores
 {

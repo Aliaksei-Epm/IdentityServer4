@@ -281,7 +281,8 @@ namespace IdentityServer.IntegrationTests.Clients
 
         private Dictionary<string, object> GetFields(TokenResponse response)
         {
-            return response.Json.ToObject<Dictionary<string, object>>();
+            var jsonRaw = response.Json.GetRawText();
+            return JObject.Parse(jsonRaw).ToObject<Dictionary<string, object>>();
         }
 
         private Dictionary<string, object> GetPayload(TokenResponse response)

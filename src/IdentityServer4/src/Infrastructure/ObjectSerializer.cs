@@ -4,6 +4,8 @@
 
 using System.Text.Json;
 
+#pragma warning disable SYSLIB0020
+
 namespace IdentityServer4
 {
     internal static class ObjectSerializer

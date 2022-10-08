@@ -5,7 +5,7 @@
 using System;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
-
+#pragma warning disable SYSLIB0023
 namespace IdentityServer4.Services
 {
     /// <summary>

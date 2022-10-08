@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
 
-    <PackageId>IdentityServer4.Storage</PackageId>
+    <PackageId>3Chum.IdentityServer4.Storage</PackageId>
     <Description>Storage interfaces and models for IdentityServer4</Description>
     <Authors>Brock Allen;Dominick Baier</Authors>
 
@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityModel" />
+    <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
   </ItemGroup>
 
