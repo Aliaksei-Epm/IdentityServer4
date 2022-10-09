@@ -1,8 +1,8 @@
-﻿using Clients;
+using Clients;
 using IdentityModel.Client;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsoleResourceOwnerFlowReference
@@ -60,7 +60,7 @@ namespace ConsoleResourceOwnerFlowReference
                 var response = await client.GetStringAsync("identity");
 
                 "\n\nService claims:".ConsoleGreen();
-                Console.WriteLine(JArray.Parse(response));
+                Console.WriteLine(JsonDocument.Parse(response));
 
                 Console.ReadLine();
             }

@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using System.Net.Http;
 using Clients;
-using Newtonsoft.Json.Linq;
 using IdentityModel.Client;
 using System.Globalization;
 using Microsoft.AspNetCore.Http;
+using System.Text.Json;
 
 namespace MvcHybrid.Controllers
 {
@@ -43,7 +43,7 @@ namespace MvcHybrid.Controllers
             client.SetBearerToken(token);
 
             var response = await client.GetStringAsync(Constants.SampleApi + "identity");
-            ViewBag.Json = JArray.Parse(response).ToString();
+            ViewBag.Json = JsonDocument.Parse(response).ToString();
 
             return View();
         }

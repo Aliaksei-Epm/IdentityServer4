@@ -1,10 +1,10 @@
-﻿using Clients;
+using Clients;
 using IdentityModel;
 using IdentityModel.Client;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsoleResourceOwnerFlowRefreshToken
@@ -92,7 +92,7 @@ namespace ConsoleResourceOwnerFlowRefreshToken
             var response = await client.GetStringAsync("identity");
 
             "\n\nService claims:".ConsoleGreen();
-            Console.WriteLine(JArray.Parse(response));
+            Console.WriteLine(JsonDocument.Parse(response));
         }
 
         private static void ShowResponse(TokenResponse response)
@@ -110,8 +110,8 @@ namespace ConsoleResourceOwnerFlowRefreshToken
                     var header = parts[0];
                     var claims = parts[1];
 
-                    Console.WriteLine(JObject.Parse(Encoding.UTF8.GetString(Base64Url.Decode(header))));
-                    Console.WriteLine(JObject.Parse(Encoding.UTF8.GetString(Base64Url.Decode(claims))));
+                    Console.WriteLine(JsonDocument.Parse(Encoding.UTF8.GetString(Base64Url.Decode(header))));
+                    Console.WriteLine(JsonDocument.Parse(Encoding.UTF8.GetString(Base64Url.Decode(claims))));
                 }
             }
             else

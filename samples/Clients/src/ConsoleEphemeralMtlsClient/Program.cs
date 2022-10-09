@@ -1,23 +1,23 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Clients;
 using IdentityModel;
 using IdentityModel.Client;
-using Newtonsoft.Json.Linq;
 
 namespace ConsoleEphemeralMtlsClient
 {
     class Program
     {
-        private static X509Certificate2 ClientCertificate;
+        private static X509Certificate2 _clientCertificate;
         
         static async Task Main(string[] args)
         {
-            ClientCertificate = CreateClientCertificate("client");
+            _clientCertificate = CreateClientCertificate("client");
             
             var response = await RequestTokenAsync();
             response.Show();
@@ -28,15 +28,15 @@ namespace ConsoleEphemeralMtlsClient
         
         static async Task<TokenResponse> RequestTokenAsync()
         {
-            var client = new HttpClient(GetHandler(ClientCertificate));
+            var client = new HttpClient(GetHandler(_clientCertificate));
 
             var disco = await client.GetDiscoveryDocumentAsync(Constants.AuthorityMtls);
             if (disco.IsError) throw new Exception(disco.Error);
 
             var endpoint = disco
                 .TryGetValue(OidcConstants.Discovery.MtlsEndpointAliases)
-                .Value<string>(OidcConstants.Discovery.TokenEndpoint)
-                .ToString();
+                .TryGetValue(OidcConstants.Discovery.TokenEndpoint)
+                .GetString();
             
             var response = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
             {
@@ -53,7 +53,7 @@ namespace ConsoleEphemeralMtlsClient
 
         static async Task CallServiceAsync(string token)
         {
-            var client = new HttpClient(GetHandler(ClientCertificate))
+            var client = new HttpClient(GetHandler(_clientCertificate))
             {
                 BaseAddress = new Uri(Constants.SampleApiMtls)
             };
@@ -62,7 +62,7 @@ namespace ConsoleEphemeralMtlsClient
             var response = await client.GetStringAsync("identity");
 
             "\n\nService claims:".ConsoleGreen();
-            Console.WriteLine(JArray.Parse(response));
+            Console.WriteLine(JsonDocument.Parse(response));
         }
         
         static X509Certificate2 CreateClientCertificate(string name)

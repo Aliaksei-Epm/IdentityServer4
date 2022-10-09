@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Clients;
 using IdentityModel.Client;
-using Newtonsoft.Json.Linq;
 
 namespace ConsoleParameterizedScopeClient
 {
@@ -49,7 +49,7 @@ namespace ConsoleParameterizedScopeClient
             var response = await client.GetStringAsync("identity");
 
             "\n\nService claims:".ConsoleGreen();
-            Console.WriteLine(JArray.Parse(response));
+            Console.WriteLine(JsonDocument.Parse(response));
         }
     }
 }
