@@ -50,7 +50,6 @@ namespace Microsoft.Extensions.DependencyInjection
 
             builder.AddClientStore<ClientStore>();
             builder.AddResourceStore<ResourceStore>();
-            builder.AddCorsPolicyService<CorsPolicyService>();
 
             return builder;
         }
@@ -66,8 +65,6 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.AddInMemoryCaching();
 
             // add the caching decorators
-            builder.AddClientStoreCache<ClientStore>();
-            builder.AddResourceStoreCache<ResourceStore>();
             builder.AddCorsPolicyCache<CorsPolicyService>();
 
             return builder;
@@ -99,11 +96,6 @@ namespace Microsoft.Extensions.DependencyInjection
             where TContext : DbContext, IPersistedGrantDbContext
         {
             builder.Services.AddOperationalDbContext<TContext>(storeOptionsAction);
-
-            builder.Services.AddTransient<IPersistedGrantStore, PersistedGrantStore>();
-            builder.Services.AddTransient<IDeviceFlowStore, DeviceFlowStore>();
-            builder.Services.AddSingleton<IHostedService, TokenCleanupHost>();
-
             return builder;
         }
 
